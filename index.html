@@ -76,10 +76,6 @@
                                     </span>
                                 
                                 
-                                    <span>
-                                        <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/2023/05/03/aosp-13/"></span>
-                                    </span>
-                                
                             
                         </div>
                         <div class="clear"></div>     
@@ -97,15 +93,6 @@
                         });
                     </script>
                 
-                
-                    <script type="module">
-                        import { commentCount } from "/js/comment.mjs";
-                      
-                        commentCount({
-                          serverURL: "https://sage-snickerdoodle-f84959.netlify.app/.netlify/functions/comment",
-                          path: window.location.pathname,
-                        });
-                    </script>
                 
             
             
@@ -142,8 +129,6 @@
                         <li class=""><a href="/tag" class="" target="_self"><span class="iconfont icon-discount-fill"></span>标签</a></li>
                     
                         <li class=""><a href="javascript:;" class="search" target="_self"><span class="iconfont icon-search-menu"></span>搜索</a></li>
-                    
-                        <li class=""><a href="/comment" class="" target="_self"><span class="iconfont icon-comments-fill"></span>留言板</a></li>
                     
                         <li class=""><a href="/friend" class="" target="_self"><span class="iconfont icon-link"></span>友情链接</a></li>
                     
@@ -404,15 +389,6 @@
                 },
             
                 {
-                    name   : "留言板",
-                    icon   : "icon-comments-fill",
-                    href   : "/comment",
-                    type   : "comment",
-                    class  : "",
-                    target : "_self"
-                },
-            
-                {
                     name   : "友情链接",
                     icon   : "icon-link",
                     href   : "/friend",
@@ -493,7 +469,7 @@
         }, 
 
         Comment : {
-            switch : true,
+            switch : false,
             type   : "Waline",
         },
 
@@ -514,7 +490,7 @@
             dark            : "html[color-scheme='dark']",
             search          : false,
             pageview        : true,
-            comment         : true,
+            comment         : false,
             copyright       : false,
         },
 

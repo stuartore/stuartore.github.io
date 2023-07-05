@@ -58,49 +58,14 @@
                     
                 </div>
                 
-    <div class="article-comments">
-        
-        <div class="comments-content"></div>
-    </div>
-    
-        <!-- 样式文件 -->
-        <link rel="stylesheet" href="/css/waline.css"/>
-        <link rel="stylesheet" href="/css/waline-custom.css"/>
-        <!-- 脚本文件 -->
-        <script type="module">
-            import { init } from "/js/waline.mjs";
-
-            const WalineInstance = init({
-                el              : ".comments-content",
-                serverURL       : "https://sage-snickerdoodle-f84959.netlify.app/.netlify/functions/comment",
-                path            : window.location.pathname,
-                meta            : ['nick', 'mail', 'link'],
-                requiredMeta    : ['nick', 'mail'],
-                pageSize        : 10,
-                lang            : "zh-cn",
-                locale: {
-                    admin       : "博主",
-                    anonymous   : "匿名用户",
-                    sofa        : "快来做第一个评论的人吧 ~",
-                    placeholder : "你是我一生只会遇见一次的惊喜...",
-                },
-                dark            : "html[color-scheme='dark']",
-                search          : false,
-                pageview        : true,
-                comment         : true,
-                copyright       : false,
-            });
-
-            // Waline 输入框选中动画
-            $(document).on("focus", ".wl-header-item .wl-input", function() {
-                $(this).parent().css("border-bottom-color", "var(--input-border-color-focus)");
-            });
-
-            $(document).on("blur", ".wl-header-item .wl-input", function() {
-                $(this).parent().css("border-bottom-color", "var(--input-border-color)");
-            });
-        </script>
-    
+    <script type="module">
+        import { pageviewCount } from "/js/pageview.mjs";
+      
+        pageviewCount({
+          serverURL: "https://sage-snickerdoodle-f84959.netlify.app/.netlify/functions/comment",
+          path: window.location.pathname,
+        });
+    </script>
  
             </div>
         
@@ -136,8 +101,6 @@
                         <li class=""><a href="/tag" class="" target="_self"><span class="iconfont icon-discount-fill"></span>标签</a></li>
                     
                         <li class=""><a href="javascript:;" class="search" target="_self"><span class="iconfont icon-search-menu"></span>搜索</a></li>
-                    
-                        <li class=" active "><a href="/comment" class="" target="_self"><span class="iconfont icon-comments-fill"></span>留言板</a></li>
                     
                         <li class=""><a href="/friend" class="" target="_self"><span class="iconfont icon-link"></span>友情链接</a></li>
                     
@@ -398,15 +361,6 @@
                 },
             
                 {
-                    name   : "留言板",
-                    icon   : "icon-comments-fill",
-                    href   : "/comment",
-                    type   : "comment",
-                    class  : "",
-                    target : "_self"
-                },
-            
-                {
                     name   : "友情链接",
                     icon   : "icon-link",
                     href   : "/friend",
@@ -487,7 +441,7 @@
         }, 
 
         Comment : {
-            switch : true,
+            switch : false,
             type   : "Waline",
         },
 
@@ -508,7 +462,7 @@
             dark            : "html[color-scheme='dark']",
             search          : false,
             pageview        : true,
-            comment         : true,
+            comment         : false,
             copyright       : false,
         },
 
